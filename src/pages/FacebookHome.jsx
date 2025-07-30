@@ -24,7 +24,7 @@ const [isUploading, setIsUploading] = useState(false);
     
     setUser(userData);
 
-    const socketConnection = io('http://localhost:5000');
+    const socketConnection = io('https://winspire-backend-1.onrender.com');
     setSocket(socketConnection);
     socketConnection.emit('joinRoom', 'facebook');
 
@@ -78,7 +78,7 @@ const [isUploading, setIsUploading] = useState(false);
 
   const fetchPosts = async (token) => {
     try {
-      const response = await fetch('http://localhost:5000/api/posts/facebook', {
+      const response = await fetch('https://winspire-backend-1.onrender.com/api/posts/facebook', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -102,7 +102,7 @@ const handleCreatePost = async () => {
       imageUrl = await convertToBase64(selectedImage);
     }
 
-    const response = await fetch('http://localhost:5000/api/posts', {
+    const response = await fetch('https://winspire-backend-1.onrender.com/api/posts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ const handleCreatePost = async () => {
   const handleLike = async (postId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/posts/${postId}/like`, {
+      const response = await fetch(`https://winspire-backend-1.onrender.com/api/posts/${postId}/like`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -154,7 +154,7 @@ const handleCreatePost = async () => {
   const handleShare = async (postId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/posts/${postId}/share`, {
+      const response = await fetch(`https://winspire-backend-1.onrender.com/api/posts/${postId}/share`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -177,7 +177,7 @@ const handleCreatePost = async () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/posts/${postId}/comment`, {
+      const response = await fetch(`https://winspire-backend-1.onrender.com/api/posts/${postId}/comment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

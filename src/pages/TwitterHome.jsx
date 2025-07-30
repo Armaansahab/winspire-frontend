@@ -22,7 +22,7 @@ const TwitterHome = () => {
 
     setUser(userData);
 
-    const socketConnection = io('http://localhost:5000');
+    const socketConnection = io('https://winspire-backend-1.onrender.com');
     setSocket(socketConnection);
     socketConnection.emit('joinRoom', 'twitter');
 
@@ -76,7 +76,7 @@ const TwitterHome = () => {
 
   const fetchPosts = async (token) => {
     try {
-      const response = await fetch('http://localhost:5000/api/posts/twitter', {
+      const response = await fetch('https://winspire-backend-1.onrender.com/api/posts/twitter', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -93,7 +93,7 @@ const TwitterHome = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/posts', {
+      const response = await fetch('https://winspire-backend-1.onrender.com/api/posts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ const TwitterHome = () => {
   const handleLike = async (postId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/posts/${postId}/like`, {
+      const response = await fetch(`https://winspire-backend-1.onrender.com/api/posts/${postId}/like`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -138,7 +138,7 @@ const TwitterHome = () => {
   const handleRetweet = async (postId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/posts/${postId}/share`, {
+      const response = await fetch(`https://winspire-backend-1.onrender.com/api/posts/${postId}/share`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -161,7 +161,7 @@ const TwitterHome = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/posts/${postId}/comment`, {
+      const response = await fetch(`https://winspire-backend-1.onrender.com/api/posts/${postId}/comment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

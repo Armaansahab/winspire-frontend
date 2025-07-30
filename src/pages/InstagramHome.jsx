@@ -24,7 +24,7 @@ const InstagramHome = () => {
 
     setUser(userData);
 
-    const socketConnection = io('http://localhost:5000');
+    const socketConnection = io('https://winspire-backend-1.onrender.com');
     setSocket(socketConnection);
     socketConnection.emit('joinRoom', 'instagram');
 
@@ -74,7 +74,7 @@ const InstagramHome = () => {
 
   const fetchPosts = async (token) => {
     try {
-      const response = await fetch('http://localhost:5000/api/posts/instagram', {
+      const response = await fetch('https://winspire-backend-1.onrender.com/api/posts/instagram', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -135,7 +135,7 @@ const InstagramHome = () => {
         imageUrl = await convertToBase64(selectedImage);
       }
 
-      const response = await fetch('http://localhost:5000/api/posts', {
+      const response = await fetch('https://winspire-backend-1.onrender.com/api/posts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -169,7 +169,7 @@ const InstagramHome = () => {
 const handleLike = async (postId) => {
   try {
     const token = localStorage.getItem('token');
-    const response = await fetch(`http://localhost:5000/api/posts/${postId}/like`, {
+    const response = await fetch(`https://winspire-backend-1.onrender.com/api/posts/${postId}/like`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`
@@ -189,7 +189,7 @@ const handleLike = async (postId) => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/posts/${postId}/comment`, {
+      const response = await fetch(`https://winspire-backend-1.onrender.com/api/posts/${postId}/comment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
